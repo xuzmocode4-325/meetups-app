@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block page_title%}{% endblock %}
+{% block og_page_title %}{% endblock %}
+{% block og_page_description %}{% endblock %}
+{% block og_social_img_url %}{% endblock %}
+{% block og_page_url %}{% endblock %}
+{% block x_page_title %}{{ meetup.title }}{% endblock %}
+{% block x_page_description %}{% endblock %}
+{% block x_image_url %}{% endblock %}
+{% block styles_css %}
+    <link rel="stylesheet" href="{% static 'meet_app/css/event.css' %}">
+{% endblock %}
+{% block header %}
+{% endblock %}
+{% block main %}
+    <article>
+        <img src="" alt="">
+        <section id="location">
+            <h2>Location</h2>
+            <address>
+                This meetup takes place in
+                <span>{{ meetup.location }}</span>
+            </address>
+        </section>
+        <section id="details">
+            <h2>What's this meetup about?</h2>
+            <p>{{ meetup.description }}</p>
+            <footer>
+                <p>Need more details? Please
+                    <a href="">
+                        contact the organiser.
+                    </a>
+                </p>
+            </footer>
+        </section>
+        <section id="registration">
+            <form>
+            </form>
+        </section>
+    </article>
+{% endblock %}

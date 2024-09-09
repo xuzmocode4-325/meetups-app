@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}{% endblock %}">
+    <meta name="author" content="Company Name">
+    <title>{% block page_title%}{% endblock %}</title>
+    <!-- Open Graph meta tags for social media sharing -->
+    <meta property="og:title" content="{% block og_page_title %}{% endblock %}">
+    <meta property="og:description" content="{% block og_page_description %}{% endblock %}">
+    <meta property="og:image" content="{% block og_social_img_url %}{% endblock %}">
+    <meta property="og:url" content="{% block og_page_url %}{% endblock %}">
+    <meta property="og:type" content="website">
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block x_page_title %}{% endblock %}">
+    <meta name="twitter:description" content="{% block x_page_description %}{% endblock %}">
+    <meta name="twitter:image" content="{% block x_image_url %}{% endblock %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block styles_css %}
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <nav class="site-nav">
+            <a href="{% url 'all-meetups' %}" id="main-logo">
+                <h1>Meetups</h1>
+            </a>
+            <ul>
+                <li><a href="{% url ''%}">Home</a></li>
+                <li><a href="{% url 'about'%}">About</a></li>
+                <li><a href="{% url 'brands'%}">Brands</a></li>
+                <li><a href="{% url 'contact'%}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+    {% block main %}
+    {% endblock %}
+    </main>
+    {% block footer %}
+    <footer>
+        <p>&copy; 2024 Your Name or Company. All rights reserved.</p>
+    </footer>
+    {% endblock %}
+</body>
+</html>
