@@ -5,10 +5,10 @@ from . import views
 urlpatterns = [
     path(
         'meetups/', 
-        views.index, 
+        views.IndexView.as_view(), 
         name='all-meetups'),
     path(
         'meetups/<slug:meetup_slug>', 
-        views.meetup_details,
+        views.MeetupDetailView.as_view(),
         name='meetup-details')
 ]

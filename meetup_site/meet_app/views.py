@@ -1,41 +1,27 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic import TemplateView, DetailView
+from . models import Meetup
 
 # Create your views here.
 
-dummy_meetups = [
-    {
-        'title': 'Fashion Week', 
-        'description': '''Catwalk and runway even in the "Big Apple".''',
-        'location':'New York', 
-        'slug': 'fashion-week-ny'
-    },
-    {
-        'title': 'Fashion Week', 
-        'description': '''Catwalk and runway even in the "City of Love".''', 
-        'location':'Paris', 
-        'slug': 'fashion-week-paris'
-    },
-]
+class IndexView(TemplateView):
+    template_name = 'meet_app/index.html'
 
-def index(request):
-    context = {}
-    context['show_meetups'] = True
-    context['meetups'] = dummy_meetups
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['show_meetups'] = True
+        context['meetups'] = Meetup.objects.all()
+        return context
 
-    return render(
-    request, 
-    'meet_app/index.html',
-    context
-)
+class MeetupDetailView(DetailView):
+    model = Meetup
+    template_name = 'meet_app/meetup-details.html'
+    context_object_name = 'meetup'
+    slug_field = 'slug'
+    slug_url_kwarg = 'meetup_slug'
 
-def meetup_details(request, meetup_slug):
-    print(meetup_slug)
-    selected_meetup = dummy_meetups[0]
-    return render(
-        request, 
-        'meet_app/meetup-details.html', 
-        {
-         "meetup": selected_meetup
-        }
-)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['meetup_found'] = True if self.object else False
+        return context
