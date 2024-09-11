@@ -16,6 +16,7 @@
 {% block header %}
 {% endblock %}
 {% block main %}
+    {% if meetup_found %}
     <article>
         <img src="" alt="">
         <section id="location">
@@ -41,4 +42,32 @@
             </form>
         </section>
     </article>
+    {% else %}
+    <article>
+        <img src="" alt="">
+        <section id="location">
+            <h2>Not Found</h2>
+            <address>
+                This meetup 
+                <span>does not exist</span>
+                !
+            </address>
+        </section>
+        <section id="details">
+            <h2>Or, maybe you entered</h2>
+            <p>there wrong URL</p>
+            <footer>
+                <p>Click here to  
+                    <a href="{% url 'all-meetups'%}">
+                        return to the main meetups page.
+                    </a>
+                </p>
+            </footer>
+        </section>
+        <section id="registration">
+            <form>
+            </form>
+        </section>
+    </article>
+    {% endif %}
 {% endblock %}
