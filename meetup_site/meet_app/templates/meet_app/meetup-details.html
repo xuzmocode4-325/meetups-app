@@ -18,7 +18,7 @@
 {% block main %}
     {% if meetup_found %}
     <article>
-        <img src="" alt="">
+        <img src="{{ meetup.image }}" alt="">
         <section id="location">
             <h2>Location</h2>
             <address>
@@ -44,7 +44,7 @@
     </article>
     {% else %}
     <article>
-        <img src="" alt="">
+        <img src="{{ meetup.image }}" alt="">
         <section id="location">
             <h2>Not Found</h2>
             <address>
