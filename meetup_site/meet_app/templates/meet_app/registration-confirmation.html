@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block page_title%}{% endblock %}
+{% block og_page_title %}{% endblock %}
+{% block og_page_description %}{% endblock %}
+{% block og_social_img_url %}{% endblock %}
+{% block og_page_url %}{% endblock %}
+{% block x_page_title %}{{ meetup.title }} Successfuly Registered {% endblock %}
+{% block x_page_description %}{% endblock %}
+{% block x_image_url %}{% endblock %}
+{% block styles_css %}
+    <link rel="stylesheet" href="{% static 'meet_app/css/event.css' %}">
+{% endblock %}
+{% block header %}
+{% endblock %}
+{% block main %}
+    {% if meetup_found %}
+    <article>
+        <img src="{{ meetup.image.url }}" id="main-image" alt="">
+        <section id="location">
+            You are successfuly registered for
+            <h2>{{ meetup.title }}</h2>
+            <address>
+                at
+                <span>{{ meetup.location.name }}</span>
+            </address>
+            <p>Enjo!</p>
+            <p>{{ meetup.description }}</p>
+        </section>
+        <section id="details">
+            <h3>Can't make it?</h3>
+            
+            <footer>
+                <p>Please update your attendence info. 
+                    <a href="">
+                        Contact the organiser.
+                    </a>
+                </p>
+            </footer>
+        </section>
+        <section id="continue">
+            <h3></h3>
+            <p>
+                <a href="{% url 'all-meetups' %}" class="btn">
+                    Explore more meetups 
+                </a>
+            </p>
+        </section>
+    </article>
+{% endblock %}
